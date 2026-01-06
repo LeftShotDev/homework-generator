@@ -1,26 +1,51 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+	--background: #ffffff;
+	--foreground: #171717;
+
+	/* Base Colors from palette */
+	--color-charcoal: #1a1a1a;
+	--color-dark-gray: #4a4a4a;
+	--color-light-gray: #d0d0d0;
+	--color-off-white: #f5f5f5;
+	--color-cream: #fafafa;
+	--color-white: #ffffff;
+	--color-indigo: #4b0082;
+	--color-blue: #0066cc;
+	--color-sky-blue: #00bfff;
+	--color-emerald: #00c853;
+	--color-goldenrod: #ffb300;
+	--color-coral: #ff6b6b;
+	--color-peach: #ffcc99;
+	--color-magenta: #ff00ff;
+
+	/* Semantic colors */
+	--color-header-green: #00c853;
+	/* emerald green for header */
+	--color-submit-purple: #9c27b0;
+	/* purple for submit button */
+	--color-keep-green: #00c853;
+	--color-edit-yellow: #ffb300;
+	--color-reject-red: #f44336;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--font-sans: var(--font-geist-sans);
+	--font-mono: var(--font-geist-mono);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+	background: var(--color-off-white);
+	color: var(--color-charcoal);
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Custom radio button styling */
+input[type="radio"]:checked+div {
+	background-color: var(--color-header-green);
+	border-color: var(--color-header-green);
+	color: white;
 }
