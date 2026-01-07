@@ -69,7 +69,7 @@ export default function AssessmentsPage() {
 
 	if (loading) {
 		return (
-			<div className="min-h-screen bg-[#f5f5f5]">
+			<div className="min-h-screen bg-[#f4f3ef]">
 				<Header />
 				<main className="container mx-auto px-4 py-8 max-w-6xl">
 					<div className="flex justify-between items-center mb-8">
@@ -78,13 +78,13 @@ export default function AssessmentsPage() {
 						</h2>
 						<Link
 							href="/form"
-							className="px-6 py-3 bg-[#00c853] text-white font-semibold rounded-lg hover:bg-[#00a043] transition-colors"
+							className="px-6 py-3 bg-[#15B976] text-white font-semibold rounded-lg hover:bg-[#12A064] transition-colors"
 						>
 							Create New Assessment
 						</Link>
 					</div>
 					<div className="text-center py-12">
-						<div className="inline-block w-8 h-8 border-4 border-[#00c853] border-t-transparent rounded-full animate-spin mb-4"></div>
+						<div className="inline-block w-8 h-8 border-4 border-[#15B976] border-t-transparent rounded-full animate-spin mb-4"></div>
 						<p className="text-[#4a4a4a]">Loading assessments...</p>
 					</div>
 				</main>
@@ -94,7 +94,7 @@ export default function AssessmentsPage() {
 
 	if (error) {
 		return (
-			<div className="min-h-screen bg-[#f5f5f5]">
+			<div className="min-h-screen bg-[#f4f3ef]">
 				<Header />
 				<main className="container mx-auto px-4 py-8 max-w-6xl">
 					<div className="flex justify-between items-center mb-8">
@@ -103,7 +103,7 @@ export default function AssessmentsPage() {
 						</h2>
 						<Link
 							href="/form"
-							className="px-6 py-3 bg-[#00c853] text-white font-semibold rounded-lg hover:bg-[#00a043] transition-colors"
+							className="px-6 py-3 bg-[#15B976] text-white font-semibold rounded-lg hover:bg-[#12A064] transition-colors"
 						>
 							Create New Assessment
 						</Link>
@@ -117,7 +117,7 @@ export default function AssessmentsPage() {
 	}
 
 	return (
-		<div className="min-h-screen bg-[#f5f5f5]">
+		<div className="min-h-screen bg-[#f4f3ef]">
 			<Header />
 			<main className="container mx-auto px-4 py-8 max-w-6xl">
 				<div className="flex justify-between items-center mb-8">
@@ -126,7 +126,7 @@ export default function AssessmentsPage() {
 					</h2>
 					<Link
 						href="/form"
-						className="px-6 py-3 bg-[#00c853] text-white font-semibold rounded-lg hover:bg-[#00a043] transition-colors"
+						className="px-6 py-3 bg-[#15B976] text-white font-semibold rounded-lg hover:bg-[#12A064] transition-colors"
 					>
 						Create New Assessment
 					</Link>
@@ -139,7 +139,7 @@ export default function AssessmentsPage() {
 						</p>
 						<Link
 							href="/form"
-							className="inline-block px-6 py-3 bg-[#00c853] text-white font-semibold rounded-lg hover:bg-[#00a043] transition-colors"
+							className="inline-block px-6 py-3 bg-[#15B976] text-white font-semibold rounded-lg hover:bg-[#12A064] transition-colors"
 						>
 							Create Your First Assessment
 						</Link>
@@ -190,7 +190,7 @@ export default function AssessmentsPage() {
 								<div className="pt-4 border-t border-[#d0d0d0]">
 									<Link
 										href={`/assessments/${assessment.id}`}
-										className="block w-full text-center px-4 py-2 bg-[#0066cc] text-white font-medium rounded-lg hover:bg-[#0052a3] transition-colors"
+										className="block w-full text-center px-4 py-2 bg-[#5367ea] text-white font-medium rounded-lg hover:bg-[#4658dc] transition-colors"
 									>
 										View Assessment
 									</Link>

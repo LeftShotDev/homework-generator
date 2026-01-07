@@ -107,7 +107,7 @@ export default function FormPage() {
 	};
 
 	return (
-		<div className="min-h-screen bg-[#f5f5f5]">
+		<div className="min-h-screen bg-[#f4f3ef]">
 			{isSubmitting && <LoadingSpinner />}
 			<Header />
 			<main className="container mx-auto px-4 py-8 max-w-4xl">
@@ -127,13 +127,13 @@ export default function FormPage() {
 							{MODULES.map((module, index) => (
 								<label
 									key={index}
-									className="flex items-center space-x-2 cursor-pointer hover:bg-[#f5f5f5] p-2 rounded"
+									className="flex items-center space-x-2 cursor-pointer hover:bg-[#f4f3ef] p-2 rounded"
 								>
 									<input
 										type="checkbox"
 										name="modules"
 										value={module}
-										className="w-4 h-4 text-[#00c853] border-gray-300 rounded focus:ring-[#00c853]"
+										className="w-4 h-4 text-[#15B976] border-gray-300 rounded focus:ring-[#15B976]"
 									/>
 									<span className="text-[#1a1a1a]">{module}</span>
 								</label>
@@ -158,7 +158,7 @@ export default function FormPage() {
 										value={count}
 										className="sr-only peer"
 									/>
-									<div className="px-6 py-3 border-2 border-[#4a4a4a] rounded-lg peer-checked:bg-[#00c853] peer-checked:border-[#00c853] peer-checked:text-white text-[#1a1a1a] font-medium hover:bg-[#e0e0e0] transition-colors">
+									<div className="px-6 py-3 border-2 border-[#4a4a4a] rounded-lg peer-checked:bg-[#15B976] peer-checked:border-[#15B976] peer-checked:text-white text-[#1a1a1a] font-medium hover:bg-[#e0e0e0] transition-colors">
 										{count}
 									</div>
 								</label>
@@ -175,13 +175,13 @@ export default function FormPage() {
 							{QUESTION_TYPES.map((type) => (
 								<label
 									key={type}
-									className="flex items-center space-x-2 cursor-pointer bg-white p-4 rounded-lg border-2 border-[#d0d0d0] hover:border-[#00c853] transition-colors"
+									className="flex items-center space-x-2 cursor-pointer bg-white p-4 rounded-lg border-2 border-[#d0d0d0] hover:border-[#15B976] transition-colors"
 								>
 									<input
 										type="checkbox"
 										name="questionTypes"
 										value={type}
-										className="w-4 h-4 text-[#00c853] border-gray-300 rounded focus:ring-[#00c853]"
+										className="w-4 h-4 text-[#15B976] border-gray-300 rounded focus:ring-[#15B976]"
 									/>
 									<span className="text-[#1a1a1a] font-medium">{type}</span>
 								</label>
@@ -194,7 +194,7 @@ export default function FormPage() {
 						<button
 							type="submit"
 							disabled={isSubmitting}
-							className="px-8 py-3 bg-[#9c27b0] text-white font-semibold rounded-lg hover:bg-[#7b1fa2] transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+							className="px-8 py-3 bg-[#5367ea] text-white font-semibold rounded-lg hover:bg-[#4658dc] transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
 						>
 							{isSubmitting ? "Generating..." : "Submit Request"}
 						</button>

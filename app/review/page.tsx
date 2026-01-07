@@ -362,11 +362,11 @@ export default function ReviewPage() {
 
 	if (loading) {
 		return (
-			<div className="min-h-screen bg-[#f5f5f5]">
+			<div className="min-h-screen bg-[#f4f3ef]">
 				<Header />
 				<main className="container mx-auto px-4 py-8 max-w-4xl">
 					<div className="text-center">
-						<div className="inline-block w-8 h-8 border-4 border-[#00c853] border-t-transparent rounded-full animate-spin mb-4"></div>
+						<div className="inline-block w-8 h-8 border-4 border-[#15B976] border-t-transparent rounded-full animate-spin mb-4"></div>
 						<p className="text-[#4a4a4a]">Loading assessment...</p>
 					</div>
 				</main>
@@ -376,7 +376,7 @@ export default function ReviewPage() {
 
 	if (error) {
 		return (
-			<div className="min-h-screen bg-[#f5f5f5]">
+			<div className="min-h-screen bg-[#f4f3ef]">
 				<Header />
 				<main className="container mx-auto px-4 py-8 max-w-4xl">
 					<div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
@@ -384,7 +384,7 @@ export default function ReviewPage() {
 					</div>
 					<button
 						onClick={() => router.push("/form")}
-						className="px-6 py-3 bg-[#00c853] text-white font-semibold rounded-lg hover:bg-[#00a043] transition-colors"
+						className="px-6 py-3 bg-[#15B976] text-white font-semibold rounded-lg hover:bg-[#12A064] transition-colors"
 					>
 						Go Back to Form
 					</button>
@@ -394,7 +394,7 @@ export default function ReviewPage() {
 	}
 
 	return (
-		<div className="min-h-screen bg-[#f5f5f5]">
+		<div className="min-h-screen bg-[#f4f3ef]">
 			<Header />
 			<main className="container mx-auto px-4 py-8 max-w-4xl">
 				<div className="flex items-center justify-between mb-8">
@@ -403,7 +403,7 @@ export default function ReviewPage() {
 					</h2>
 					{saving && (
 						<div className="flex items-center gap-2 text-[#4a4a4a]">
-							<div className="w-4 h-4 border-2 border-[#00c853] border-t-transparent rounded-full animate-spin"></div>
+							<div className="w-4 h-4 border-2 border-[#15B976] border-t-transparent rounded-full animate-spin"></div>
 							<span>Saving...</span>
 						</div>
 					)}
@@ -439,7 +439,7 @@ export default function ReviewPage() {
 						<p className="text-[#4a4a4a] text-lg mb-4">No questions found in the assessment.</p>
 						<button
 							onClick={() => router.push("/form")}
-							className="px-6 py-3 bg-[#00c853] text-white font-semibold rounded-lg hover:bg-[#00a043] transition-colors"
+							className="px-6 py-3 bg-[#15B976] text-white font-semibold rounded-lg hover:bg-[#12A064] transition-colors"
 						>
 							Generate New Assessment
 						</button>
@@ -450,7 +450,7 @@ export default function ReviewPage() {
 							<div
 								key={index}
 								className={`bg-white rounded-lg shadow-md p-6 ${question.status === "keep"
-									? "border-2 border-[#00c853]"
+									? "border-2 border-[#15B976]"
 									: question.status === "reject"
 										? "border-2 border-[#f44336] opacity-60"
 										: question.status === "edit"
@@ -465,7 +465,7 @@ export default function ReviewPage() {
 									{question.status !== "pending" && (
 										<span
 											className={`px-3 py-1 rounded-full text-sm font-medium ${question.status === "keep"
-												? "bg-[#e8f5e9] text-[#00c853]"
+												? "bg-[#d4f4e3] text-[#15B976]"
 												: question.status === "reject"
 													? "bg-red-100 text-[#f44336]"
 													: "bg-yellow-100 text-[#ffb300]"
@@ -489,7 +489,7 @@ export default function ReviewPage() {
 										<textarea
 											value={question.editedText || question.question_text || question.text || ""}
 											onChange={(e) => handleUpdateQuestionText(index, e.target.value)}
-											className="w-full px-4 py-2 border-2 border-[#d0d0d0] rounded-lg focus:border-[#00c853] focus:outline-none min-h-[100px]"
+											className="w-full px-4 py-2 border-2 border-[#d0d0d0] rounded-lg focus:border-[#15B976] focus:outline-none min-h-[100px]"
 											placeholder="Enter question text"
 										/>
 									</div>
@@ -530,7 +530,7 @@ export default function ReviewPage() {
 																	type="text"
 																	value={choice}
 																	onChange={(e) => handleUpdateChoice(index, choiceIndex, e.target.value)}
-																	className="flex-1 px-4 py-2 border-2 border-[#d0d0d0] rounded-lg focus:border-[#00c853] focus:outline-none"
+																	className="flex-1 px-4 py-2 border-2 border-[#d0d0d0] rounded-lg focus:border-[#15B976] focus:outline-none"
 																	placeholder={`Choice ${String.fromCharCode(65 + choiceIndex)})`}
 																/>
 																<button
@@ -548,19 +548,19 @@ export default function ReviewPage() {
 														<label
 															key={choiceIndex}
 															className={`flex items-start space-x-3 cursor-pointer p-3 rounded transition-colors ${isCorrect
-																? "bg-[#e8f5e9] border-2 border-[#00c853]"
-																: "hover:bg-[#f5f5f5]"
+																? "bg-[#d4f4e3] border-2 border-[#15B976]"
+																: "hover:bg-[#f4f3ef]"
 																}`}
 														>
 															<input
 																type="radio"
 																name={`question-${index}`}
 																value={choiceLetter || choice}
-																className="mt-1 w-4 h-4 text-[#00c853] border-gray-300 focus:ring-[#00c853]"
+																className="mt-1 w-4 h-4 text-[#15B976] border-gray-300 focus:ring-[#15B976]"
 															/>
 															<span className="text-[#1a1a1a] flex-1">{choice}</span>
 															{isCorrect && (
-																<span className="text-[#00c853] font-semibold ml-2">✓ Correct</span>
+																<span className="text-[#15B976] font-semibold ml-2">✓ Correct</span>
 															)}
 														</label>
 													);
@@ -568,7 +568,7 @@ export default function ReviewPage() {
 												{question.status === "edit" && (
 													<button
 														onClick={() => handleAddChoice(index)}
-														className="mt-2 px-4 py-2 bg-[#0066cc] text-white rounded-lg hover:bg-[#0052a3] transition-colors text-sm"
+														className="mt-2 px-4 py-2 bg-[#5367ea] text-white rounded-lg hover:bg-[#4658dc] transition-colors text-sm"
 														type="button"
 													>
 														+ Add Choice
@@ -588,7 +588,7 @@ export default function ReviewPage() {
 													type="text"
 													value={question.editedAnswer || question.answer || ""}
 													onChange={(e) => handleUpdateAnswer(index, e.target.value)}
-													className="w-full px-4 py-2 border-2 border-[#d0d0d0] rounded-lg focus:border-[#00c853] focus:outline-none"
+													className="w-full px-4 py-2 border-2 border-[#d0d0d0] rounded-lg focus:border-[#15B976] focus:outline-none"
 													placeholder="Enter correct answer"
 												/>
 											) : (
@@ -596,11 +596,11 @@ export default function ReviewPage() {
 													<input
 														type="text"
 														placeholder="Enter your answer here"
-														className="w-full px-4 py-2 border-2 border-[#d0d0d0] rounded-lg focus:border-[#00c853] focus:outline-none"
+														className="w-full px-4 py-2 border-2 border-[#d0d0d0] rounded-lg focus:border-[#15B976] focus:outline-none"
 													/>
 													{question.answer && (
-														<div className="mt-3 p-3 bg-[#e8f5e9] border-2 border-[#00c853] rounded-lg">
-															<p className="text-sm font-semibold text-[#00c853] mb-1">Correct Answer:</p>
+														<div className="mt-3 p-3 bg-[#d4f4e3] border-2 border-[#15B976] rounded-lg">
+															<p className="text-sm font-semibold text-[#15B976] mb-1">Correct Answer:</p>
 															<p className="text-[#1a1a1a]">{question.answer}</p>
 														</div>
 													)}
@@ -618,7 +618,7 @@ export default function ReviewPage() {
 											<select
 												value={question.editedAnswer || question.answer || ""}
 												onChange={(e) => handleUpdateAnswer(index, e.target.value)}
-												className="w-full px-4 py-2 border-2 border-[#d0d0d0] rounded-lg focus:border-[#00c853] focus:outline-none"
+												className="w-full px-4 py-2 border-2 border-[#d0d0d0] rounded-lg focus:border-[#15B976] focus:outline-none"
 											>
 												<option value="">Select correct answer</option>
 												{question.editedChoices.map((choice, choiceIndex) => {
@@ -637,7 +637,7 @@ export default function ReviewPage() {
 
 								{/* Submit button for answering */}
 								<div className="mb-4">
-									<button className="px-4 py-2 bg-[#0066cc] text-white rounded-lg hover:bg-[#0052a3] transition-colors text-sm">
+									<button className="px-4 py-2 bg-[#5367ea] text-white rounded-lg hover:bg-[#4658dc] transition-colors text-sm">
 										Submit
 									</button>
 								</div>
@@ -648,9 +648,9 @@ export default function ReviewPage() {
 										<button
 											onClick={() => handleSaveEdit(index)}
 											disabled={saving}
-											className={`flex-1 px-6 py-3 bg-[#00c853] text-white font-semibold rounded-lg transition-colors ${saving
+											className={`flex-1 px-6 py-3 bg-[#15B976] text-white font-semibold rounded-lg transition-colors ${saving
 												? "opacity-50 cursor-not-allowed"
-												: "hover:bg-[#00a043]"
+												: "hover:bg-[#12A064]"
 												}`}
 										>
 											Save Changes
@@ -671,9 +671,9 @@ export default function ReviewPage() {
 										<button
 											onClick={() => handleKeep(index)}
 											disabled={question.status === "keep" || question.status === "reject" || saving}
-											className={`flex-1 px-6 py-3 bg-[#00c853] text-white font-semibold rounded-lg transition-colors ${question.status === "keep" || question.status === "reject" || saving
+											className={`flex-1 px-6 py-3 bg-[#15B976] text-white font-semibold rounded-lg transition-colors ${question.status === "keep" || question.status === "reject" || saving
 												? "opacity-50 cursor-not-allowed"
-												: "hover:bg-[#00a043]"
+												: "hover:bg-[#12A064]"
 												}`}
 										>
 											{question.status === "keep" ? "✓ Kept" : "Keep"}

@@ -85,13 +85,13 @@ export default function AssessmentDetailPage({
 	params: { id: string };
 }) {
 	return (
-		<div className="min-h-screen bg-[#f5f5f5]">
+		<div className="min-h-screen bg-[#f4f3ef]">
 			<Header />
 			<main className="container mx-auto px-4 py-8 max-w-4xl">
 				<div className="mb-6">
 					<Link
 						href="/assessments"
-						className="text-[#0066cc] hover:text-[#0052a3] font-medium"
+						className="text-[#5367ea] hover:text-[#4658dc] font-medium"
 					>
 						← Back to Assessments
 					</Link>
@@ -140,13 +140,13 @@ export default function AssessmentDetailPage({
 											<div
 												key={choiceIndex}
 												className={`p-3 rounded ${choice === question.correct_answer
-														? "bg-[#e8f5e9] border-2 border-[#00c853]"
-														: "bg-[#f5f5f5] border-2 border-transparent"
+														? "bg-[#d4f4e3] border-2 border-[#15B976]"
+														: "bg-[#f4f3ef] border-2 border-transparent"
 													}`}
 											>
 												<span className="text-[#1a1a1a]">{choice}</span>
 												{choice === question.correct_answer && (
-													<span className="ml-2 text-[#00c853] font-semibold">
+													<span className="ml-2 text-[#15B976] font-semibold">
 														✓ Correct Answer
 													</span>
 												)}
@@ -156,7 +156,7 @@ export default function AssessmentDetailPage({
 								)}
 
 								{question.type === "Text Answer" && (
-									<div className="p-3 bg-[#f5f5f5] rounded">
+									<div className="p-3 bg-[#f4f3ef] rounded">
 										<span className="text-[#4a4a4a] italic">
 											Text answer required
 										</span>
