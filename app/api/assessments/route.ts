@@ -15,16 +15,49 @@ export async function POST(request: NextRequest) {
 			);
 		}
 
+		// Validate required fields match schema
+		if (typeof assessment_data.number !== "number") {
+			return NextResponse.json(
+				{ error: "Invalid number field: must be an integer" },
+				{ status: 400 }
+			);
+		}
+
+		if (!Array.isArray(assessment_data.modules)) {
+			return NextResponse.json(
+				{ error: "Invalid modules field: must be an array" },
+				{ status: 400 }
+			);
+		}
+
+		if (!Array.isArray(assessment_data.question_types)) {
+			return NextResponse.json(
+				{ error: "Invalid question_types field: must be an array" },
+				{ status: 400 }
+			);
+		}
+
+		if (!Array.isArray(accepted_questions)) {
+			return NextResponse.json(
+				{ error: "Invalid accepted_questions field: must be an array" },
+				{ status: 400 }
+			);
+		}
+
+		// Prepare data matching schema structure
+		// Schema: timestamp (TIMESTAMPTZ), number (INTEGER), modules (TEXT[]), question_types (TEXT[]), questions (JSONB)
+		const insertData = {
+			timestamp: assessment_data.timestamp || new Date().toISOString(),
+			number: assessment_data.number,
+			modules: assessment_data.modules,
+			question_types: assessment_data.question_types,
+			questions: accepted_questions,
+		};
+
 		// Insert assessment into database
 		const { data, error } = await supabase
 			.from("assessments")
-			.insert({
-				timestamp: assessment_data.timestamp || new Date().toISOString(),
-				number: assessment_data.number,
-				modules: assessment_data.modules,
-				question_types: assessment_data.question_types,
-				questions: accepted_questions,
-			} as any)
+			.insert(insertData as any)
 			.select()
 			.single();
 
