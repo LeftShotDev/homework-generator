@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Header from "../components/Header";
 
@@ -35,6 +35,7 @@ export default function ReviewPage() {
 	const [loading, setLoading] = useState(true);
 	const [saving, setSaving] = useState(false);
 	const [error, setError] = useState<string | null>(null);
+	const hasSavedRef = useRef(false); // Track if we've already saved to prevent duplicates
 
 	useEffect(() => {
 		// Get data from sessionStorage
@@ -145,9 +146,16 @@ export default function ReviewPage() {
 	}, []);
 
 	const saveToDatabase = async (acceptedQuestions: Question[]) => {
-		if (!assessmentData || saving) return;
+		// Prevent duplicate saves: check both state and ref
+		if (!assessmentData || saving || hasSavedRef.current) {
+			console.log("Save prevented - already saved or saving in progress", { saving, hasSaved: hasSavedRef.current });
+			return;
+		}
 
+		// Mark as saving immediately to prevent race conditions
+		hasSavedRef.current = true;
 		setSaving(true);
+
 		try {
 			const response = await fetch("/api/assessments", {
 				method: "POST",
@@ -169,11 +177,16 @@ export default function ReviewPage() {
 				const errorData = await response.json().catch(() => ({ error: "Failed to parse error response" }));
 				const errorMessage = errorData.error || `Failed to save assessment (${response.status})`;
 				console.error("API error:", errorMessage, errorData);
+				// Reset the ref on error so user can retry
+				hasSavedRef.current = false;
 				throw new Error(errorMessage);
 			}
 
 			const result = await response.json();
 			console.log("Assessment saved successfully:", result);
+
+			// Clear sessionStorage to prevent re-saving if user navigates back
+			sessionStorage.removeItem("generatedQuestions");
 
 			// Redirect to assessments page
 			router.push("/assessments");
@@ -319,7 +332,8 @@ export default function ReviewPage() {
 
 	// Check and save when all questions are processed
 	useEffect(() => {
-		if (questions.length === 0 || saving || !assessmentData) return;
+		// Prevent save if already saved, currently saving, or missing data
+		if (questions.length === 0 || saving || !assessmentData || hasSavedRef.current) return;
 
 		// Check if all questions have been processed (keep or reject)
 		// Edit questions are considered pending until saved
@@ -337,8 +351,11 @@ export default function ReviewPage() {
 					answer: q.editedAnswer || q.answer,
 				}));
 
-			// Save to database
-			saveToDatabase(acceptedQuestions);
+			// Only save if we have at least one accepted question
+			if (acceptedQuestions.length > 0) {
+				// Save to database
+				saveToDatabase(acceptedQuestions);
+			}
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [questions, saving, assessmentData]);
