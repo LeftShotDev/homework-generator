@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabase } from "@/app/lib/supabase";
+import { getSupabaseClient } from "@/app/lib/supabase";
 
 export async function POST(request: NextRequest) {
 	try {
+		const supabase = getSupabaseClient();
 		const body = await request.json();
 
 		const { assessment_data, accepted_questions } = body;
@@ -23,7 +24,7 @@ export async function POST(request: NextRequest) {
 				modules: assessment_data.modules,
 				question_types: assessment_data.question_types,
 				questions: accepted_questions,
-			})
+			} as any)
 			.select()
 			.single();
 
